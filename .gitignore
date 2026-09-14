@@ -1,0 +1,35 @@
+# ---- data & third-party datasets (never commit; see data/README.md) ----
+data/*
+!data/README.md
+reference/
+*.h5ad
+*.csv
+*.tsv
+*.xlsx
+
+# ---- model outputs / large artifacts ----
+outputs/
+**/outputs/
+*.npz
+*.npy
+*.pkl
+*.joblib
+
+# ---- figures are kept, but ignore scratch renders ----
+reports/figures/*.tmp.*
+
+# ---- python ----
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- os / editor ----
+.DS_Store
+.idea/
+.vscode/
+
+# ---- slides / binaries not meant for the code repo ----
+*.pptx
+*.potx

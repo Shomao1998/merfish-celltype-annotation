@@ -90,7 +90,7 @@ in this field can be 10⁵–10⁶ cells. See [`reports/lessons_learned.md`](rep
 - **Expression label features** (class-centroid cosine + expression-kNN vote) — noisy at 5K, stabilize with more reference cells.
 - **Anatomical bucket constraint** (Region×E/I×Segment; 15 of 28 buckets map to one type) — a finer successor to the E/I mask once coverage fills in.
 - **Deep & spatial models** (CNN/DNN, semi-supervised over full sections) — data-hungry; should overtake at scale.
-- **LLM reranker (Qwen)** — re-scores only our own uncertain top-3, gated on marker-gene evidence; research only, never submitted.
+- **LLM reranker (Qwen)** — unlike atlas-matching (CellTypist, GPTCelltype) or foundation models (scGPT, Geneformer) that need external references/corpora, a **no-external-data** experiment: the LLM acts only as a *decision-flow interceptor*, voting on our own uncertain top-3 under marker-gene gating. Research only, never submitted — [design & rules](experiments/llm_reranker/README.md).
 
 **Evidence the ceiling is data, not method:** on a larger *public* atlas with whole-mouse holdout,
 the same pipeline goes from ~0.77 to ~**0.92** as labeled cells grow 5K → 118K. A caution we

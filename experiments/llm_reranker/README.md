@@ -4,13 +4,36 @@
 > external information, so this was never connected to the competition submission
 > (`submission_approved: false` in the run manifest).
 
+## Design motivation
+
+Before building anything, I looked at how LLMs and foundation models are currently used for
+cell-type annotation. Two families dominate, and **both lean on external knowledge or data**:
+
+- **Reference / atlas matching.** Map query cells onto a large *annotated* reference and transfer
+  the labels — e.g. **CellTypist**, **Azimuth**, **SingleR** — or ask a general-purpose LLM to
+  name a cluster from its top marker genes using the model's own biological knowledge and marker
+  databases (e.g. **GPTCelltype** with GPT-4). Fast, but the answer rides entirely on an external
+  reference or the LLM's outside knowledge.
+- **Single-cell foundation models.** Transformers pretrained on tens of millions of cells —
+  e.g. **Geneformer**, **scGPT**, **scBERT**, **scFoundation** — then fine-tuned to classify cell
+  types. Powerful, but they require a massive external pretraining corpus.
+
+Both were off the table here — the competition banned external data. So in a *vibe-coding*
+brainstorm we asked a different question: **can an LLM help without any external data or reference,
+purely as an arbiter inside our own model's decision flow?** That reframes the LLM from a
+*knowledge source* into a **decision-flow interceptor** — it never labels a cell from scratch and
+never sees an outside atlas. It only **intercepts** the handful of cells our own ensemble is
+unsure about and **votes/scores** among the candidates our model already produced, grounded solely
+in marker-gene evidence computed from our own training folds, and gated so it can rarely overrule
+us.
+
+*(The tools above are representative examples of each category; see each project's paper for details.)*
+
 ## What this is (and what it is *not*)
 
-Some recent work annotates cells by asking an LLM to **match them directly against a reference
-atlas**. This does **not** do that. Here the LLM only **re-ranks our own model's output**, for
-a small set of uncertain cells, under a chain of conservative gates — and it may only choose
-among candidates our model already proposed. It runs a **local** `qwen3:8b` via Ollama; nothing
-leaves the machine.
+Concretely, the LLM only **re-ranks our own model's output**, for a small set of uncertain cells,
+under a chain of conservative gates — and it may only choose among candidates our model already
+proposed. It runs a **local** `qwen3:8b` via Ollama; nothing leaves the machine.
 
 ## Which cells it touches (target set)
 

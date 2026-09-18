@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;fill:#172033}.title{font-size:20px;font-weight:700}.subtitle{font-size:12px;fill:#64748b}.axis{font-size:10px;fill:#64748b}.label{font-size:11px}.grid{stroke:#e2e8f0;stroke-width:1}</style>
+<text x="24" y="30" class="title">Per-cell count quality</text>
+<text x="24" y="50" class="subtitle">Overlaid train/test distributions; strong separation would indicate covariate shift.</text>
+<text x="60" y="62" class="label" font-weight="700">Total transcripts per cell</text>
+<line x1="60.0" y1="80" x2="60.0" y2="330" class="grid"/>
+<text x="60.0" y="350" text-anchor="middle" class="axis">4</text>
+<line x1="142.5" y1="80" x2="142.5" y2="330" class="grid"/>
+<text x="142.5" y="350" text-anchor="middle" class="axis">59</text>
+<line x1="225.0" y1="80" x2="225.0" y2="330" class="grid"/>
+<text x="225.0" y="350" text-anchor="middle" class="axis">1.1e+02</text>
+<line x1="307.5" y1="80" x2="307.5" y2="330" class="grid"/>
+<text x="307.5" y="350" text-anchor="middle" class="axis">1.7e+02</text>
+<line x1="390.0" y1="80" x2="390.0" y2="330" class="grid"/>
+<text x="390.0" y="350" text-anchor="middle" class="axis">2.2e+02</text>
+<polyline points="65.5,151.7 76.5,80.9 87.5,157.3 98.5,210.1 109.5,260.0 120.5,280.1 131.5,294.0 142.5,299.7 153.5,313.6 164.5,316.5 175.5,317.7 186.5,316.9 197.5,322.3 208.5,324.1 219.5,324.9 230.5,325.1 241.5,326.6 252.5,327.8 263.5,328.2 274.5,326.8 285.5,329.4 296.5,328.8 307.5,329.4 318.5,329.6 329.5,329.2 340.5,329.2 351.5,329.4 362.5,329.8 373.5,329.4 384.5,329.4" fill="none" stroke="#2563eb" stroke-width="2" opacity="0.9"/>
+<polyline points="65.5,144.3 76.5,80.0 87.5,154.8 98.5,213.5 109.5,265.7 120.5,281.9 131.5,296.4 142.5,298.9 153.5,313.0 164.5,312.6 175.5,316.4 186.5,320.5 197.5,322.3 208.5,324.3 219.5,324.9 230.5,327.8 241.5,326.4 252.5,327.0 263.5,326.6 274.5,327.8 285.5,329.0 296.5,329.4 307.5,329.0 318.5,329.6 329.5,328.6 340.5,329.8 351.5,329.4 362.5,329.8 373.5,329.2 384.5,329.0" fill="none" stroke="#f97316" stroke-width="2" opacity="0.9"/>
+<line x1="60" y1="330" x2="390" y2="330" stroke="#64748b"/>
+<text x="445" y="62" class="label" font-weight="700">Detected genes per cell</text>
+<line x1="445.0" y1="80" x2="445.0" y2="330" class="grid"/>
+<text x="445.0" y="350" text-anchor="middle" class="axis">3</text>
+<line x1="527.5" y1="80" x2="527.5" y2="330" class="grid"/>
+<text x="527.5" y="350" text-anchor="middle" class="axis">16</text>
+<line x1="610.0" y1="80" x2="610.0" y2="330" class="grid"/>
+<text x="610.0" y="350" text-anchor="middle" class="axis">30</text>
+<line x1="692.5" y1="80" x2="692.5" y2="330" class="grid"/>
+<text x="692.5" y="350" text-anchor="middle" class="axis">43</text>
+<line x1="775.0" y1="80" x2="775.0" y2="330" class="grid"/>
+<text x="775.0" y="350" text-anchor="middle" class="axis">56</text>
+<polyline points="450.5,281.7 461.5,187.5 472.5,85.6 483.5,95.8 494.5,220.7 505.5,141.3 516.5,162.1 527.5,198.1 538.5,275.7 549.5,244.7 560.5,266.5 571.5,277.1 582.5,306.0 593.5,284.2 604.5,298.6 615.5,309.5 626.5,309.9 637.5,319.4 648.5,315.9 659.5,314.8 670.5,320.1 681.5,325.1 692.5,323.3 703.5,324.4 714.5,326.1 725.5,327.5 736.5,327.2 747.5,328.6 758.5,328.9 769.5,328.9" fill="none" stroke="#2563eb" stroke-width="2" opacity="0.9"/>
+<polyline points="450.5,282.8 461.5,177.5 472.5,89.9 483.5,80.0 494.5,214.2 505.5,140.2 516.5,187.0 527.5,211.0 538.5,283.2 549.5,233.9 560.5,257.1 571.5,284.9 582.5,308.5 593.5,290.9 604.5,299.4 615.5,303.6 626.5,304.6 637.5,321.5 648.5,315.6 659.5,313.8 670.5,317.3 681.5,325.8 692.5,324.0 703.5,324.7 714.5,325.8 725.5,327.5 736.5,327.2 747.5,327.5 758.5,328.6 769.5,327.2" fill="none" stroke="#f97316" stroke-width="2" opacity="0.9"/>
+<line x1="445" y1="330" x2="775" y2="330" stroke="#64748b"/>
+<text x="830" y="62" class="label" font-weight="700">Fraction of zero counts</text>
+<line x1="830.0" y1="80" x2="830.0" y2="330" class="grid"/>
+<text x="830.0" y="350" text-anchor="middle" class="axis">0.72</text>
+<line x1="912.5" y1="80" x2="912.5" y2="330" class="grid"/>
+<text x="912.5" y="350" text-anchor="middle" class="axis">0.79</text>
+<line x1="995.0" y1="80" x2="995.0" y2="330" class="grid"/>
+<text x="995.0" y="350" text-anchor="middle" class="axis">0.85</text>
+<line x1="1077.5" y1="80" x2="1077.5" y2="330" class="grid"/>
+<text x="1077.5" y="350" text-anchor="middle" class="axis">0.92</text>
+<line x1="1160.0" y1="80" x2="1160.0" y2="330" class="grid"/>
+<text x="1160.0" y="350" text-anchor="middle" class="axis">0.98</text>
+<polyline points="835.5,328.9 846.5,328.9 857.5,328.6 868.5,327.2 879.5,327.5 890.5,326.1 901.5,324.4 912.5,323.3 923.5,325.1 934.5,320.1 945.5,314.8 956.5,315.9 967.5,319.4 978.5,309.9 989.5,309.5 1000.5,298.6 1011.5,284.2 1022.5,306.0 1033.5,277.1 1044.5,266.5 1055.5,244.7 1066.5,275.7 1077.5,198.1 1088.5,162.1 1099.5,141.3 1110.5,220.7 1121.5,95.8 1132.5,85.6 1143.5,187.5 1154.5,281.7" fill="none" stroke="#2563eb" stroke-width="2" opacity="0.9"/>
+<polyline points="835.5,327.2 846.5,328.6 857.5,327.5 868.5,327.2 879.5,327.5 890.5,325.8 901.5,324.7 912.5,324.0 923.5,325.8 934.5,317.3 945.5,313.8 956.5,315.6 967.5,321.5 978.5,304.6 989.5,303.6 1000.5,299.4 1011.5,290.9 1022.5,308.5 1033.5,284.9 1044.5,257.1 1055.5,233.9 1066.5,283.2 1077.5,211.0 1088.5,187.0 1099.5,140.2 1110.5,214.2 1121.5,80.0 1132.5,89.9 1143.5,177.5 1154.5,282.8" fill="none" stroke="#f97316" stroke-width="2" opacity="0.9"/>
+<line x1="830" y1="330" x2="1160" y2="330" stroke="#64748b"/>
+<line x1="1020" y1="26" x2="1040" y2="26" stroke="#2563eb" stroke-width="3"/><text x="1046" y="30" class="axis">train</text>
+<line x1="1100" y1="26" x2="1120" y2="26" stroke="#f97316" stroke-width="3"/><text x="1126" y="30" class="axis">test</text>
+</svg>

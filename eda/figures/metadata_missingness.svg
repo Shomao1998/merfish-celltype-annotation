@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="540" viewBox="0 0 1050 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;fill:#172033}.title{font-size:20px;font-weight:700}.subtitle{font-size:12px;fill:#64748b}.axis{font-size:10px;fill:#64748b}.label{font-size:11px}.grid{stroke:#e2e8f0;stroke-width:1}</style>
+<text x="24" y="30" class="title">Metadata missingness</text>
+<text x="24" y="50" class="subtitle">The test target is intentionally missing; other gaps may require indicators or imputation.</text>
+<line x1="210.0" y1="75" x2="210.0" y2="485" class="grid"/>
+<text x="210.0" y="505" text-anchor="middle" class="axis">0%</text>
+<line x1="368.0" y1="75" x2="368.0" y2="485" class="grid"/>
+<text x="368.0" y="505" text-anchor="middle" class="axis">20%</text>
+<line x1="526.0" y1="75" x2="526.0" y2="485" class="grid"/>
+<text x="526.0" y="505" text-anchor="middle" class="axis">40%</text>
+<line x1="684.0" y1="75" x2="684.0" y2="485" class="grid"/>
+<text x="684.0" y="505" text-anchor="middle" class="axis">60%</text>
+<line x1="842.0" y1="75" x2="842.0" y2="485" class="grid"/>
+<text x="842.0" y="505" text-anchor="middle" class="axis">80%</text>
+<line x1="1000.0" y1="75" x2="1000.0" y2="485" class="grid"/>
+<text x="1000.0" y="505" text-anchor="middle" class="axis">100%</text>
+<text x="202" y="96.1" text-anchor="end" class="label">Datasets</text>
+<rect x="210" y="83.1" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="93.1" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="130.2" text-anchor="end" class="label">volume</text>
+<rect x="210" y="117.2" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="127.2" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="164.4" text-anchor="end" class="label">center_x</text>
+<rect x="210" y="151.4" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="161.4" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="198.6" text-anchor="end" class="label">center_y</text>
+<rect x="210" y="185.6" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="195.6" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="232.8" text-anchor="end" class="label">MERFISH_cell_type_annotation</text>
+<rect x="210" y="219.8" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="229.8" width="790.00" height="8" fill="#f97316"/>
+<text x="202" y="266.9" text-anchor="end" class="label">Region</text>
+<rect x="210" y="253.9" width="496.44" height="8" fill="#2563eb"/>
+<rect x="210" y="263.9" width="501.97" height="8" fill="#f97316"/>
+<text x="202" y="301.1" text-anchor="end" class="label">Excitatory_vs_Inhibitory</text>
+<rect x="210" y="288.1" width="496.44" height="8" fill="#2563eb"/>
+<rect x="210" y="298.1" width="501.97" height="8" fill="#f97316"/>
+<text x="202" y="335.2" text-anchor="end" class="label">Segment</text>
+<rect x="210" y="322.2" width="467.36" height="8" fill="#2563eb"/>
+<rect x="210" y="332.2" width="474.63" height="8" fill="#f97316"/>
+<text x="202" y="369.4" text-anchor="end" class="label">Gender</text>
+<rect x="210" y="356.4" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="366.4" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="403.6" text-anchor="end" class="label">Mouse_ID</text>
+<rect x="210" y="390.6" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="400.6" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="437.8" text-anchor="end" class="label">AP_position</text>
+<rect x="210" y="424.8" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="434.8" width="0.00" height="8" fill="#f97316"/>
+<text x="202" y="471.9" text-anchor="end" class="label">Section_ID</text>
+<rect x="210" y="458.9" width="0.00" height="8" fill="#2563eb"/>
+<rect x="210" y="468.9" width="0.00" height="8" fill="#f97316"/>
+<rect x="870" y="22" width="12" height="8" fill="#2563eb"/><text x="888" y="30" class="axis">train</text>
+<rect x="945" y="22" width="12" height="8" fill="#f97316"/><text x="963" y="30" class="axis">test</text>
+</svg>

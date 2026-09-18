@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="1180" viewBox="0 0 1050 1180">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;fill:#172033}.title{font-size:20px;font-weight:700}.subtitle{font-size:12px;fill:#64748b}.axis{font-size:10px;fill:#64748b}.label{font-size:11px}.grid{stroke:#e2e8f0;stroke-width:1}</style>
+<text x="24" y="30" class="title">Training class distribution</text>
+<text x="24" y="50" class="subtitle">60 target classes; sorted from rarest to most common.</text>
+<text x="252" y="77" text-anchor="end" class="label">VH_in_Chat</text>
+<rect x="260" y="67" width="3.12" height="12" rx="2" fill="#2563eb"/>
+<text x="269.12" y="77" class="axis">3</text>
+<text x="252" y="95" text-anchor="end" class="label">DH_ex_Maf/Cpne4</text>
+<rect x="260" y="85" width="6.23" height="12" rx="2" fill="#2563eb"/>
+<text x="272.23" y="95" class="axis">6</text>
+<text x="252" y="113" text-anchor="end" class="label">cholinergic_interneuron</text>
+<rect x="260" y="103" width="7.27" height="12" rx="2" fill="#2563eb"/>
+<text x="273.27" y="113" class="axis">7</text>
+<text x="252" y="131" text-anchor="end" class="label">DH_in_Kcnip2</text>
+<rect x="260" y="121" width="8.31" height="12" rx="2" fill="#2563eb"/>
+<text x="274.31" y="131" class="axis">8</text>
+<text x="252" y="149" text-anchor="end" class="label">visceral_motoneuron</text>
+<rect x="260" y="139" width="8.31" height="12" rx="2" fill="#2563eb"/>
+<text x="274.31" y="149" class="axis">8</text>
+<text x="252" y="167" text-anchor="end" class="label">DH_ex_Rreb1</text>
+<rect x="260" y="157" width="9.35" height="12" rx="2" fill="#2563eb"/>
+<text x="275.35" y="167" class="axis">9</text>
+<text x="252" y="185" text-anchor="end" class="label">ependymal</text>
+<rect x="260" y="175" width="10.38" height="12" rx="2" fill="#2563eb"/>
+<text x="276.38" y="185" class="axis">10</text>
+<text x="252" y="203" text-anchor="end" class="label">M_ex_Neurod2</text>
+<rect x="260" y="193" width="11.42" height="12" rx="2" fill="#2563eb"/>
+<text x="277.42" y="203" class="axis">11</text>
+<text x="252" y="221" text-anchor="end" class="label">beta_motoneuron</text>
+<rect x="260" y="211" width="14.54" height="12" rx="2" fill="#2563eb"/>
+<text x="280.54" y="221" class="axis">14</text>
+<text x="252" y="239" text-anchor="end" class="label">DH_ex_Maf/Slc17a8</text>
+<rect x="260" y="229" width="17.65" height="12" rx="2" fill="#2563eb"/>
+<text x="283.65" y="239" class="axis">17</text>
+<text x="252" y="257" text-anchor="end" class="label">meninges_3</text>
+<rect x="260" y="247" width="19.73" height="12" rx="2" fill="#2563eb"/>
+<text x="285.73" y="257" class="axis">19</text>
+<text x="252" y="275" text-anchor="end" class="label">DH_in_Klhl14</text>
+<rect x="260" y="265" width="21.81" height="12" rx="2" fill="#2563eb"/>
+<text x="287.81" y="275" class="axis">21</text>
+<text x="252" y="293" text-anchor="end" class="label">MV_in_Chrna2</text>
+<rect x="260" y="283" width="22.84" height="12" rx="2" fill="#2563eb"/>
+<text x="288.84" y="293" class="axis">22</text>
+<text x="252" y="311" text-anchor="end" class="label">peripheral_glia</text>
+<rect x="260" y="301" width="23.88" height="12" rx="2" fill="#2563eb"/>
+<text x="289.88" y="311" class="axis">23</text>
+<text x="252" y="329" text-anchor="end" class="label">M_ex_Vsx2/Shox2</text>
+<rect x="260" y="319" width="23.88" height="12" rx="2" fill="#2563eb"/>
+<text x="289.88" y="329" class="axis">23</text>
+<text x="252" y="347" text-anchor="end" class="label">DH_ex_Cpne4</text>
+<rect x="260" y="337" width="27.00" height="12" rx="2" fill="#2563eb"/>
+<text x="293.00" y="347" class="axis">26</text>
+<text x="252" y="365" text-anchor="end" class="label">M_ex_Vsx2</text>
+<rect x="260" y="355" width="27.00" height="12" rx="2" fill="#2563eb"/>
+<text x="293.00" y="365" class="axis">26</text>
+<text x="252" y="383" text-anchor="end" class="label">DH_ex_Grp</text>
+<rect x="260" y="373" width="27.00" height="12" rx="2" fill="#2563eb"/>
+<text x="293.00" y="383" class="axis">26</text>
+<text x="252" y="401" text-anchor="end" class="label">DH_in_Pdyn/Gal</text>
+<rect x="260" y="391" width="27.00" height="12" rx="2" fill="#2563eb"/>
+<text x="293.00" y="401" class="axis">26</text>
+<text x="252" y="419" text-anchor="end" class="label">DH_in_Rorb</text>
+<rect x="260" y="409" width="30.11" height="12" rx="2" fill="#2563eb"/>
+<text x="296.11" y="419" class="axis">29</text>
+<text x="252" y="437" text-anchor="end" class="label">DH_ex_Prkcg/Rxfp1</text>
+<rect x="260" y="427" width="31.15" height="12" rx="2" fill="#2563eb"/>
+<text x="297.15" y="437" class="axis">30</text>
+<text x="252" y="455" text-anchor="end" class="label">DH_ex_Grpr</text>
+<rect x="260" y="445" width="32.19" height="12" rx="2" fill="#2563eb"/>
+<text x="298.19" y="455" class="axis">31</text>
+<text x="252" y="473" text-anchor="end" class="label">DH_ex_Tac2</text>
+<rect x="260" y="463" width="33.23" height="12" rx="2" fill="#2563eb"/>
+<text x="299.23" y="473" class="axis">32</text>
+<text x="252" y="491" text-anchor="end" class="label">DH_ex_Gpr83</text>
+<rect x="260" y="481" width="34.27" height="12" rx="2" fill="#2563eb"/>
+<text x="300.27" y="491" class="axis">33</text>
+<text x="252" y="509" text-anchor="end" class="label">DH_ex_Reln</text>
+<rect x="260" y="499" width="34.27" height="12" rx="2" fill="#2563eb"/>
+<text x="300.27" y="509" class="axis">33</text>
+<text x="252" y="527" text-anchor="end" class="label">DH_ex_Prkcg/Cck</text>
+<rect x="260" y="517" width="34.27" height="12" rx="2" fill="#2563eb"/>
+<text x="300.27" y="527" class="axis">33</text>
+<text x="252" y="545" text-anchor="end" class="label">DH_ex_Sox5/Tac1</text>
+<rect x="260" y="535" width="35.31" height="12" rx="2" fill="#2563eb"/>
+<text x="301.31" y="545" class="axis">34</text>
+<text x="252" y="563" text-anchor="end" class="label">DH_ex_Reln/Npff</text>
+<rect x="260" y="553" width="37.38" height="12" rx="2" fill="#2563eb"/>
+<text x="303.38" y="563" class="axis">36</text>
+<text x="252" y="581" text-anchor="end" class="label">DH_in_Npy2r</text>
+<rect x="260" y="571" width="39.46" height="12" rx="2" fill="#2563eb"/>
+<text x="305.46" y="581" class="axis">38</text>
+<text x="252" y="599" text-anchor="end" class="label">pericyte</text>
+<rect x="260" y="589" width="41.54" height="12" rx="2" fill="#2563eb"/>
+<text x="307.54" y="599" class="axis">40</text>
+<text x="252" y="617" text-anchor="end" class="label">meninges_2</text>
+<rect x="260" y="607" width="43.61" height="12" rx="2" fill="#2563eb"/>
+<text x="309.61" y="617" class="axis">42</text>
+<text x="252" y="635" text-anchor="end" class="label">MV_ex_Shox2</text>
+<rect x="260" y="625" width="43.61" height="12" rx="2" fill="#2563eb"/>
+<text x="309.61" y="635" class="axis">42</text>
+<text x="252" y="653" text-anchor="end" class="label">DH_ex_Sox5</text>
+<rect x="260" y="643" width="49.84" height="12" rx="2" fill="#2563eb"/>
+<text x="315.84" y="653" class="axis">48</text>
+<text x="252" y="671" text-anchor="end" class="label">gamma_motoneuron</text>
+<rect x="260" y="661" width="49.84" height="12" rx="2" fill="#2563eb"/>
+<text x="315.84" y="671" class="axis">48</text>
+<text x="252" y="689" text-anchor="end" class="label">oligodendrocyte_progenitor_1</text>
+<rect x="260" y="679" width="50.88" height="12" rx="2" fill="#2563eb"/>
+<text x="316.88" y="689" class="axis">49</text>
+<text x="252" y="707" text-anchor="end" class="label">Schwann_cell</text>
+<rect x="260" y="697" width="50.88" height="12" rx="2" fill="#2563eb"/>
+<text x="316.88" y="707" class="axis">49</text>
+<text x="252" y="725" text-anchor="end" class="label">DH_ex_Prkcg/Nts</text>
+<rect x="260" y="715" width="54.00" height="12" rx="2" fill="#2563eb"/>
+<text x="320.00" y="725" class="axis">52</text>
+<text x="252" y="743" text-anchor="end" class="label">DH_in_Npy</text>
+<rect x="260" y="733" width="56.07" height="12" rx="2" fill="#2563eb"/>
+<text x="322.07" y="743" class="axis">54</text>
+<text x="252" y="761" text-anchor="end" class="label">DH_in_Pdyn</text>
+<rect x="260" y="751" width="61.27" height="12" rx="2" fill="#2563eb"/>
+<text x="327.27" y="761" class="axis">59</text>
+<text x="252" y="779" text-anchor="end" class="label">MV_in_Esrrb</text>
+<rect x="260" y="769" width="65.42" height="12" rx="2" fill="#2563eb"/>
+<text x="331.42" y="779" class="axis">63</text>
+<text x="252" y="797" text-anchor="end" class="label">microglia</text>
+<rect x="260" y="787" width="66.46" height="12" rx="2" fill="#2563eb"/>
+<text x="332.46" y="797" class="axis">64</text>
+<text x="252" y="815" text-anchor="end" class="label">DH_ex_Maf/Cck</text>
+<rect x="260" y="805" width="66.46" height="12" rx="2" fill="#2563eb"/>
+<text x="332.46" y="815" class="axis">64</text>
+<text x="252" y="833" text-anchor="end" class="label">DH_ex_Nmu/Tac2</text>
+<rect x="260" y="823" width="66.46" height="12" rx="2" fill="#2563eb"/>
+<text x="332.46" y="833" class="axis">64</text>
+<text x="252" y="851" text-anchor="end" class="label">DH_ex_Reln/Nmur2</text>
+<rect x="260" y="841" width="69.57" height="12" rx="2" fill="#2563eb"/>
+<text x="335.57" y="851" class="axis">67</text>
+<text x="252" y="869" text-anchor="end" class="label">meninges_1</text>
+<rect x="260" y="859" width="69.57" height="12" rx="2" fill="#2563eb"/>
+<text x="335.57" y="869" class="axis">67</text>
+<text x="252" y="887" text-anchor="end" class="label">M_in_Tfap2b</text>
+<rect x="260" y="877" width="75.80" height="12" rx="2" fill="#2563eb"/>
+<text x="341.80" y="887" class="axis">73</text>
+<text x="252" y="905" text-anchor="end" class="label">MV_in_Sema5b</text>
+<rect x="260" y="895" width="97.61" height="12" rx="2" fill="#2563eb"/>
+<text x="363.61" y="905" class="axis">94</text>
+<text x="252" y="923" text-anchor="end" class="label">alpha_motoneuron</text>
+<rect x="260" y="913" width="111.11" height="12" rx="2" fill="#2563eb"/>
+<text x="377.11" y="923" class="axis">107</text>
+<text x="252" y="941" text-anchor="end" class="label">MV_in_Gm26673</text>
+<rect x="260" y="931" width="114.22" height="12" rx="2" fill="#2563eb"/>
+<text x="380.22" y="941" class="axis">110</text>
+<text x="252" y="959" text-anchor="end" class="label">oligodendrocyte_precursor_cell</text>
+<rect x="260" y="949" width="114.22" height="12" rx="2" fill="#2563eb"/>
+<text x="380.22" y="959" class="axis">110</text>
+<text x="252" y="977" text-anchor="end" class="label">MV_ex_Syt2</text>
+<rect x="260" y="967" width="117.34" height="12" rx="2" fill="#2563eb"/>
+<text x="383.34" y="977" class="axis">113</text>
+<text x="252" y="995" text-anchor="end" class="label">DH_in_Cdh3</text>
+<rect x="260" y="985" width="128.76" height="12" rx="2" fill="#2563eb"/>
+<text x="394.76" y="995" class="axis">124</text>
+<text x="252" y="1013" text-anchor="end" class="label">DM_ex_Zfhx3</text>
+<rect x="260" y="1003" width="138.11" height="12" rx="2" fill="#2563eb"/>
+<text x="404.11" y="1013" class="axis">133</text>
+<text x="252" y="1031" text-anchor="end" class="label">MV_in_Gabra1</text>
+<rect x="260" y="1021" width="150.57" height="12" rx="2" fill="#2563eb"/>
+<text x="416.57" y="1031" class="axis">145</text>
+<text x="252" y="1049" text-anchor="end" class="label">astrocyte_2</text>
+<rect x="260" y="1039" width="203.53" height="12" rx="2" fill="#2563eb"/>
+<text x="469.53" y="1049" class="axis">196</text>
+<text x="252" y="1067" text-anchor="end" class="label">oligodendrocyte_1</text>
+<rect x="260" y="1057" width="281.41" height="12" rx="2" fill="#2563eb"/>
+<text x="547.41" y="1067" class="axis">271</text>
+<text x="252" y="1085" text-anchor="end" class="label">endothelial</text>
+<rect x="260" y="1075" width="335.41" height="12" rx="2" fill="#2563eb"/>
+<text x="601.41" y="1085" class="axis">323</text>
+<text x="252" y="1103" text-anchor="end" class="label">oligodendrocyte_2</text>
+<rect x="260" y="1093" width="435.09" height="12" rx="2" fill="#2563eb"/>
+<text x="701.09" y="1103" class="axis">419</text>
+<text x="252" y="1121" text-anchor="end" class="label">astrocyte_1</text>
+<rect x="260" y="1111" width="595.01" height="12" rx="2" fill="#2563eb"/>
+<text x="861.01" y="1121" class="axis">573</text>
+<text x="252" y="1139" text-anchor="end" class="label">oligodendrocyte_progenitor_2</text>
+<rect x="260" y="1129" width="730.00" height="12" rx="2" fill="#2563eb"/>
+<text x="996.00" y="1139" class="axis">703</text>
+</svg>

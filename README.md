@@ -20,7 +20,19 @@ would push the model further.
 
 ---
 
-## 2. Final model & results
+## 2. Data exploration & key insights
+
+Before modeling I ran a full EDA ([`eda/eda.py`](eda/eda.py) → [plain-English report](eda/EDA_REPORT_PLAIN_ENGLISH.md) · [technical report](eda/EDA_REPORT.md) · figures in [`eda/figures/`](eda/figures)) and wrote a [**data dictionary**](eda/DATA_DICTIONARY.md) documenting every column, its missingness, and how we'd use it. The findings shaped every decision below.
+
+- **The data.** 10,000 cells (≈5K train / 5K test), 200 genes, 60 cell types. Expression is extremely sparse — the median cell has non-zero counts for only **12 of 200 genes** and **~21 transcripts total**, so each cell carries little information on its own.
+- **★ E/I is a clean partition — our most useful insight.** Every one of the 60 types belongs to exactly one Excitatory/Inhibitory group: **24 excitatory · 15 inhibitory · 21 non-neuronal · zero overlap**. This directly motivated the hard-constraint decoder — a prediction should never cross the E/I line.
+- **Missingness is informative.** E/I, Region and Segment are blank for ~60% of cells, but that blank marks non-neuronal cells — so we encode missingness explicitly instead of dropping it.
+- **Severe class imbalance.** Largest class 703 training cells, smallest just 3 (~**234×**) — so we track per-class accuracy, not only the overall number.
+- **Train and test are the same experiment.** Same 10 mice and 108 sections, spatially interleaved. A nearest-neighbor-only baseline scores only **11.1%** (vs. 14.1% for always-guess-majority) — location alone isn't enough, and a random split leaks neighbors between train and validation. **This is why we validate by holding out whole mice/batches, not random cells.**
+
+---
+
+## 3. Final model & results
 
 **The model:** an **equal-probability ensemble of five diverse learners** — LightGBM · Logistic
 Regression · MLP · KNN · CatBoost — wrapped by a **biology hard-constraint decoder** and
@@ -47,7 +59,7 @@ Regression · MLP · KNN · CatBoost — wrapped by a **biology hard-constraint 
 
 ---
 
-## 3. What improved the model most
+## 4. What improved the model most
 
 Three factors did the real work:
 
@@ -65,7 +77,7 @@ Three factors did the real work:
 
 ---
 
-## 4. How we built the model, step by step
+## 5. How we built the model, step by step
 
 1. **Baseline — LightGBM.** Strong and fast on tabular data; our starting point.
 2. **Add a linear model — Logistic Regression.** With only 5K cells over 200 very sparse genes
@@ -82,7 +94,7 @@ Three factors did the real work:
 
 ---
 
-## 5. Directions worth exploring further
+## 6. Directions worth exploring further
 
 These ideas underperformed on 5K cells but are **validation-limited, not wrong** — real problems
 in this field can be 10⁵–10⁶ cells. See [`reports/lessons_learned.md`](reports/lessons_learned.md).
@@ -117,6 +129,8 @@ external information).
 ## Repository layout
 
 ```
+eda/
+  eda.py · EDA_REPORT*.md · DATA_DICTIONARY.md · figures/   # exploration, insights, data dictionary
 src/
   model_v031_robust_5model.py          # final line: 5-model ensemble + E/I decoding + target encoding
   model_v04_full_centroid_knn_bucket.py# most complete pipeline (adds centroid/kNN/bucket features)*

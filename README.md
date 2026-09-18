@@ -5,30 +5,36 @@
 > Classifying 60 neuronal cell types from sparse spatial gene expression.
 > **🥈 2nd Prize — University of Rochester Biomedical Data Science Hackathon, Summer 2026** (Team **XDRKAMOA**).
 
-This repository is **my modeling line** for the team's 2nd-place entry, plus the validation
-harness that drove our decisions and a post-competition study of what would push the model
-further. The emphasis throughout is **honest generalization**, not leaderboard chasing.
+---
+
+## 1. Background & result
+
+The [University of Rochester Biomedical Data Science Hackathon, Summer 2026](https://github.com/Rochester-Biomedical-DS/Hackathon-Summer-2026)
+was a prediction challenge on **MERFISH** spatial-transcriptomics data: classify the cell type
+(1 of **60**) for each cell in a mouse spinal-cord dataset — ~10,000 cells, **200 genes**,
+~**93% zeros** — scored by overall accuracy.
+
+**Our team (XDRKAMOA) placed 🥈 2nd.** This repository is my modeling line for that entry: the
+end-to-end pipeline, the validation that kept us honest, and a post-competition study of what
+would push the model further.
 
 ---
 
-## TL;DR
+## 2. Final model & results
 
-- **Task:** predict the cell type (1 of 60) for each cell in a mouse spinal-cord **MERFISH**
-  dataset — ~10,000 cells, **200 genes**, ~**93% zeros**. Metric: overall accuracy.
-- **What worked:** a **biology-constrained, 5-model probability ensemble** with fold-safe
-  **target encoding**, validated by **leave-one-mouse-out** GroupKFold.
-- **The interesting part:** I diagnosed a **~0.02 CV→leaderboard gap** (random CV was
-  optimistic), rebuilt the model to be **ID-free and group-validated**, and then ran a
-  **post-competition scaling study** showing the real ceiling is **data, not method**
-  (leave-one-mouse-out accuracy **0.77 → 0.92** as labeled cells grow 5K → 118K).
-- **Integrity:** the submitted model uses **zero external data**. I also found (and did not
-  exploit) a leaderboard **data leak** — the public source atlas contains the test cells.
+**The model:** an **equal-probability ensemble of five diverse learners** — LightGBM · Logistic
+Regression · MLP · KNN · CatBoost — wrapped by a **biology hard-constraint decoder** and
+**fold-safe target encoding**, and deliberately **free of experiment-specific IDs**.
 
----
+**Why we chose it:**
+- **Diversity over a single tuned model** — five models with uncorrelated errors, averaged, are
+  steadier than any one of them.
+- **Biology should be enforced, not just learned** — a cell can't be an excitatory *and* an
+  inhibitory type, so we forbid the model from ever crossing that line.
+- **Honest generalization over leaderboard score** — we validated by holding out whole mice, and
+  kept experiment IDs out of the features, because random cross-validation was misleading (below).
 
-## Results
-
-Leave-one-mouse-out accuracy (the honest, group-validated metric):
+**Results** — leave-one-mouse-out accuracy (the honest, group-validated metric):
 
 | Model | LOMO accuracy |
 |---|---|
@@ -39,72 +45,72 @@ Leave-one-mouse-out accuracy (the honest, group-validated metric):
 | LightGBM (baseline) | 0.760 |
 | **5-model ensemble (final)** | **0.769** |
 
+---
+
+## 3. What improved the model most
+
+Three factors did the real work:
+
+- **Biology-constrained decoding.** EDA showed the *excitatory / inhibitory / non-neuronal* groups
+  **never share a cell type**, so a hard mask forbids any prediction from crossing its E/I group —
+  a whole class of errors removed for free.
+- **Fold-safe target encoding.** Anatomical groups (Region, Segment, and their joint with E/I) are
+  encoded into out-of-fold per-group cell-type priors — a "who lives here" signal the 200 sparse
+  genes can't supply. This was our single most effective feature.
+- **Generalization-first validation.** We validated with **leave-one-mouse-out** and
+  **leave-one-batch-out** GroupKFold, and kept Mouse / Section / Dataset IDs out of the features.
+  This mattered: an earlier version scored ~0.777 in random CV but ~0.75 online — a ~0.02 gap from
+  random-CV optimism plus ID-like crutches. Removing the IDs and validating by group closed it.
+  *(Rule of thumb we adopted: a change counts only if two seeds agree in sign.)*
+
+---
+
+## 4. How we built the model, step by step
+
+1. **Baseline — LightGBM.** Strong and fast on tabular data; our starting point.
+2. **Add a linear model — Logistic Regression.** With only 5K cells over 200 very sparse genes
+   (~93% zeros), a linear model handles sparse, high-dimensional data well *and* fails differently
+   from trees — the first source of diversity.
+3. **Add three more diverse learners.** An **MLP** for non-linear structure, a **KNN** for
+   neighborhood signal in expression space, and **CatBoost** — another tree, but one that behaves
+   a little differently from LightGBM.
+4. **Fuse by averaging probabilities.** Simple and robust. Compared to our best single model after
+   feature engineering, the ensemble added about **a full point** of accuracy — purely from
+   diversity, because the models make different mistakes that cancel out.
+
 ![Ensemble vs. single models](reports/figures/ensemble_vs_single.png)
 
-The gain is small but real, and it comes entirely from **diversity** — five models that make
-uncorrelated errors, averaged.
-
 ---
 
-## Approach
+## 5. Directions worth exploring further
 
-**Baseline → ensemble.** I started from **LightGBM** (strong on tabular data). Because the
-data is only 5K cells over 200 very sparse genes, I added **logistic regression** (linear
-models handle sparse, high-dimensional data well and fail differently from trees), then fused
-an **MLP** (non-linear structure), a **KNN** (neighborhood signal), and **CatBoost** (a
-differently-behaved tree). The five are combined by **equal-probability averaging**.
+These ideas underperformed on 5K cells but are **validation-limited, not wrong** — real problems
+in this field can be 10⁵–10⁶ cells. See [`reports/lessons_learned.md`](reports/lessons_learned.md).
 
-**Biology-constrained decoding.** EDA showed the *excitatory / inhibitory / non-neuronal*
-groups **never share a cell type**, so a hard mask forbids any prediction from crossing its
-E/I group — a whole class of errors removed for free.
+- **Expression label features** (class-centroid cosine + expression-kNN vote) — noisy at 5K, stabilize with more reference cells.
+- **Anatomical bucket constraint** (Region×E/I×Segment; 15 of 28 buckets map to one type) — a finer successor to the E/I mask once coverage fills in.
+- **Deep & spatial models** (CNN/DNN, semi-supervised over full sections) — data-hungry; should overtake at scale.
+- **LLM reranker (Qwen)** — re-scores only our own uncertain top-3, gated on marker-gene evidence; research only, never submitted.
 
-**Fold-safe target encoding.** Anatomical groups (Region, Segment, and their joint with E/I)
-are encoded into per-group cell-type priors — an out-of-fold "who lives here" signal that the
-200 sparse genes can't supply on their own. This was the single most effective feature.
-
-**Generalization-first design.** Experiment-specific IDs (Mouse / Section / Dataset) are kept
-**out of the features** and used only for grouped validation.
-
----
-
-## What makes this rigorous (the part I'm proud of)
-
-- **Double-seed discipline** — a change counts only if two seeds agree in sign (noise floor ≈ ±0.005).
-- **Leave-one-mouse-out & leave-one-batch-out GroupKFold** — simulates a genuinely new
-  animal/experiment. Random CV shares sections between train and validation and is optimistic.
-- **CV→leaderboard gap, diagnosed and fixed.** An earlier version scored ~0.777 in random CV
-  but ~0.75 online. The cause was random-CV optimism plus ID-like crutches; the fix was the
-  ID-free, group-validated design above.
-
----
-
-## Post-competition study: the ceiling was data, not method
-
-Using a larger **public** spinal-cord MERFISH atlas (~147K cells, 10 mice) purely as a
-**scaling testbed** — holding out **whole mice** so no held-out cell's neighbor is ever in
-training — the *same* pipeline goes from ~0.77 to ~**0.92** leave-one-mouse-out as labeled
-cells grow 5K → 118K.
+**Evidence the ceiling is data, not method:** on a larger *public* atlas with whole-mouse holdout,
+the same pipeline goes from ~0.77 to ~**0.92** as labeled cells grow 5K → 118K. A caution we
+learned the hard way — **watch fold variance, not the mean**: an under-regularized model silently
+collapsed whole held-out mice to 0.06 while random CV still read 0.9.
+Code: [`experiments/atlas_loso_testbed.py`](experiments/atlas_loso_testbed.py).
 
 ![Data scaling](reports/figures/data_scaling.png)
-
-A caution I learned the hard way: an **under-regularized GBDT silently collapses whole
-held-out mice** to ~0.06 accuracy while random CV still reads ~0.9. **Watch fold variance,
-not just the mean.** Code: [`experiments/atlas_loso_testbed.py`](experiments/atlas_loso_testbed.py).
-
-**This is why several ideas we dropped are validation-limited, not wrong** — see
-[`reports/lessons_learned.md`](reports/lessons_learned.md).
 
 ---
 
 ## Integrity note
 
-The competition banned external data. Our **submitted model uses none**. During the
+The competition banned external data, and **our submitted model uses none**. During the
 competition I found that the public source atlas (Zenodo `MERFISH_spinal_cord_resolved_0718`)
-**contains the competition's own cells**, making labels recoverable — a real leaderboard leak.
-We **did not exploit it**; this repo ships **no answer-key lookup code**. The atlas appears
-here only as a *post-competition* scaling testbed with whole-mouse holdout, and any
-LLM component (below) was kept as **research only, never submitted**, because a pretrained
-model's knowledge could itself count as external information.
+**contains the competition's own cells**, making labels recoverable — a real leaderboard leak. We
+**did not exploit it**, and this repo ships **no answer-key lookup code**. The atlas appears here
+only as a *post-competition* scaling testbed with whole-mouse holdout, and the LLM component was
+kept as **research only, never submitted** (a pretrained model's knowledge could itself count as
+external information).
 
 ---
 
@@ -116,47 +122,36 @@ src/
   model_v04_full_centroid_knn_bucket.py# most complete pipeline (adds centroid/kNN/bucket features)*
   validation/                          # GroupKFold audits & ablations (the rigor)
 experiments/
-  atlas_loso_testbed.py                # ★ post-competition data-scaling study (0.77 → 0.92)
+  atlas_loso_testbed.py                # post-competition data-scaling study (0.77 → 0.92)
   llm_reranker/                        # Qwen3 OOF reranker — research only, never submitted
 reports/
-  lessons_learned.md                   # 3 things that worked + 4 promising, data-limited directions
-  figures/
+  lessons_learned.md · figures/
 ```
-\* v0.4 is the most complete pipeline but did **not** beat v0.31 on group CV, so v0.31 remained
-the submission line — kept here for transparency.
-
-See [`src/README.md`](src/README.md) and [`experiments/llm_reranker/README.md`](experiments/llm_reranker/README.md) for details.
-
----
+\* v0.4 is the most complete pipeline but did **not** beat v0.31 on group CV, so v0.31 remained the
+submission line — kept for transparency. See [`src/README.md`](src/README.md).
 
 ## Reproduce
 
 ```bash
 pip install -r requirements.txt
 # Data is NOT redistributed here — see data/README.md to obtain it, then:
-python src/model_v031_robust_5model.py --mode oof   --schemes mouse dataset --seeds 0 1   # group-CV
-python src/model_v031_robust_5model.py --mode predict --seeds 0 1 2 3 4                    # submission
-# Post-competition scaling study (needs the public atlas — see data/README.md):
-python experiments/atlas_loso_testbed.py --mode dev
+python src/model_v031_robust_5model.py --mode oof   --schemes mouse dataset --seeds 0 1
+python src/model_v031_robust_5model.py --mode predict --seeds 0 1 2 3 4
 ```
 
 ## Data
 
-Not included (it belongs to the organizers / is a separately-licensed public dataset).
-See [`data/README.md`](data/README.md) for how to obtain the competition data and the atlas.
+Not included (it belongs to the organizers / is a separately-licensed public dataset). See
+[`data/README.md`](data/README.md).
 
 ## Team & my role
 
-Team **XDRKAMOA** (4 members) placed 2nd. **My contribution** (this repo): the modeling and
-ensemble line, the generalization-first validation harness, and the post-competition scaling
-and LLM-reranker research. Teammates led EDA/workflow, final-model write-up, and biological
-interpretation.
-
-## Author
-
-M.S. Data Science, University of Rochester · `@<your-github-handle>`
+Team **XDRKAMOA** placed 2nd. As the team's **technical lead**, I built the **end-to-end pipeline —
+from exploratory data analysis through modeling to final prediction** — working with three
+first-time-competitor teammates from very different backgrounds, and set the validation strategy
+that drove our modeling decisions.
 
 ## License
 
-Code released under the [MIT License](LICENSE). Data and the third-party atlas are **not**
-covered by this license and are not redistributed here.
+Code under the [MIT License](LICENSE). Data and the third-party atlas are **not** covered and are
+not redistributed here.

@@ -10,6 +10,9 @@ scipy>=1.11
 anndata>=0.10
 matplotlib>=3.7
 
+# Model explainability (src/shap_analysis.py)
+shap>=0.44
+
 # LLM reranker research only (experiments/llm_reranker/) — runs a LOCAL model via Ollama.
 # Install Ollama separately (https://ollama.com) and `ollama pull qwen3:8b`.
 # No Python API key is used; nothing leaves the machine.

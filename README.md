@@ -57,6 +57,18 @@ Regression · MLP · KNN · CatBoost — wrapped by a **biology hard-constraint 
 | LightGBM (baseline) | 0.760 |
 | **5-model ensemble (final)** | **0.769** |
 
+### Model explainability (SHAP)
+
+SHAP (`TreeExplainer` on the LightGBM model — [`src/shap_analysis.py`](src/shap_analysis.py)) confirms
+the model leans on **biologically sensible signals, not artifacts**. Its strongest drivers are the
+**excitatory/inhibitory label** and **anatomical context** (Segment / E-I *missingness* — i.e.
+non-neuronal cells), followed by canonical **marker genes**: *Pvalb* and *Sst* (interneurons),
+*Ptgds* / *Tnr* / *Rnf220* (oligodendrocyte–OPC lineage), *Ntrk3*, *Grik5*. This validates the E/I
+hard-constraint and the anatomical features, and shows the model reads real cell-type markers.
+
+![SHAP global feature importance](reports/figures/shap_global_importance.png)
+![SHAP beeswarm — drivers of the most abundant class](reports/figures/shap_beeswarm.png)
+
 ---
 
 ## 4. What improved the model most

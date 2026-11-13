@@ -10,6 +10,25 @@ My section of the team presentation: what we kept, what we dropped, and why.
 | **Five-model ensemble** | Equal-probability mean of LightGBM · LogReg · MLP · KNN · CatBoost. | Diverse models make uncorrelated errors that cancel when averaged. | **LOMO 0.760 → 0.769** — our largest single architectural gain. |
 | **Target encoding (Region × Segment × E/I)** | Fold-safe encoding of anatomical groups into per-group cell-type priors, fed to the linear models. | With only 200 sparse genes, it injects an anatomical prior the raw counts can't supply. | Clear lift for LogReg & MLP — our most effective single feature. |
 
+## Does it use the right signals? (SHAP)
+
+Before trusting those gains I checked *what the model actually keys on* — `shap.TreeExplainer`
+over the LightGBM path ([`../src/shap_analysis.py`](../src/shap_analysis.py)). The answer is
+reassuring: the model leans on **biology, not artifacts.**
+
+| Rank | Top drivers (mean \|SHAP\|) | What it means |
+|---|---|---|
+| 1 | **Excitatory/Inhibitory label** | The single strongest feature — the model has learned the same E/I split we hard-enforce in decoding. |
+| 2 | **Anatomical missingness** (Segment / E-I = *NA*) | The "blank" that marks non-neuronal cells is signal, exactly as EDA predicted. |
+| 3+ | **Canonical marker genes** — *Pvalb*, *Sst* (interneurons); *Ptgds*, *Tnr*, *Rnf220* (oligo–OPC lineage); *Ntrk3*, *Grik5* | Real, literature-known cell-type markers — not spurious correlations. |
+
+Two takeaways: (1) the E/I hard constraint and the anatomical features are **validated from the
+data side**, not just assumed; (2) the model reads genuine marker biology, so the accuracy is
+trustworthy rather than a leaderboard artifact.
+
+![SHAP global feature importance](figures/shap_global_importance.png)
+![SHAP beeswarm — drivers of the most abundant class](figures/shap_beeswarm.png)
+
 ## Tried, dropped — but high potential
 
 Our training set was only ~5,000 cells. Real problems in this field can be 10⁵–10⁶ cells, and at

@@ -9,6 +9,7 @@ Paths in these scripts assume the competition data is available under `data/`
 |---|---|
 | `model_v031_robust_5model.py` | **The final line.** Equal-probability ensemble of LightGBM · LogReg · MLP · KNN · CatBoost, with the E/I hard-constraint decoder and fold-safe target encoding. Experiment IDs are excluded from features and used only for grouped validation. |
 | `model_v04_full_centroid_knn_bucket.py` | **Most complete pipeline.** v0.31 plus three extra generalizable ideas — class-centroid cosine, expression-kNN true-label vote, and a Region×E/I×Segment bucket mask. It did **not** beat v0.31 on group CV, so v0.31 stayed the submission; kept here for transparency and as the base for future scaling. |
+| `shap_analysis.py` | **Explainability.** `shap.TreeExplainer` on the LightGBM model; writes `reports/figures/shap_global_importance.png` and `shap_beeswarm.png`. Confirms the model relies on the E/I label, anatomical context, and canonical marker genes. Run: `python src/shap_analysis.py <DATA_DIR>`. |
 
 Common commands:
 

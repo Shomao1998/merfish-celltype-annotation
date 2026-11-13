@@ -54,6 +54,17 @@ CatBoost —— 外包一层**生物硬约束解码器**与**折内安全的 tar
 | LightGBM(基线) | 0.760 |
 | **五模型集成(最终)** | **0.769** |
 
+### 模型可解释性(SHAP)
+
+SHAP(对 LightGBM 模型做 `TreeExplainer` —— [`src/shap_analysis.py`](src/shap_analysis.py))证实模型
+依赖的是**生物学上合理的信号,而非伪影**。最强的驱动因素是**兴奋性/抑制性标签**与**解剖背景**
+(Segment / E-I 的*缺失*——即非神经元细胞),其次是经典 **marker 基因**:*Pvalb*、*Sst*(中间神经元),
+*Ptgds* / *Tnr* / *Rnf220*(少突—OPC 谱系),*Ntrk3*、*Grik5*。这印证了 E/I 硬约束和解剖特征的合理性,
+也说明模型读取的是真实的细胞类型标记。
+
+![SHAP 全局特征重要性](reports/figures/shap_global_importance.png)
+![SHAP beeswarm —— 最大类别的驱动因素](reports/figures/shap_beeswarm.png)
+
 ---
 
 ## 4. 对模型提升最大的因素
